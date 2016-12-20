@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Confirmation</title>
+  </head>
+  <body>
+    <h1>Are you sure you want to delete the following course?</h1>
+    <label for="name">Name:</label> {{course_to_delete.name}}
+    <label for="description">Description:</label> {{course_to_delete.description}}
+    <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+      <input type="submit" value="No">
+    </form>
+    <form action="{% url 'destroy' id=course_to_delete.id %}" method="post">
+    {% csrf_token %}
+      <input type="submit" value="Yes">
+    </form>
+  </body>
+</html>
